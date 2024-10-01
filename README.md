@@ -1,5 +1,5 @@
 # Improved HurtColor
-### Extension to fade hearthurtcolor in Minecraft Bedrock Edition written in C++
+### Extension to fade hurtcolor in Minecraft Bedrock Edition written in C++
 
 # How to use
 
