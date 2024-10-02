@@ -157,6 +157,7 @@
     <ClCompile Include="Libs\MinHook\hde\hde64.c" />
     <ClCompile Include="Libs\MinHook\hook.c" />
     <ClCompile Include="Libs\MinHook\trampoline.c" />
+    <ClCompile Include="Mem\Hook\Hooks\FreeLibraryAndExitThreadHook.cpp" />
     <ClCompile Include="Mem\Hook\Hooks\KeyboardHook.cpp" />
     <ClCompile Include="Mem\Hook\Hooks\RenderControllerHook.cpp" />
   </ItemGroup>
@@ -188,6 +189,7 @@
     <ClInclude Include="Libs\MinHook\trampoline.h" />
     <ClInclude Include="Mem\HookHandler.h" />
     <ClInclude Include="Mem\Hook\Hook.h" />
+    <ClInclude Include="Mem\Hook\Hooks\FreeLibraryAndExitThreadHook.h" />
     <ClInclude Include="Mem\Hook\Hooks\KeyboardHook.h" />
     <ClInclude Include="Mem\Hook\Hooks\RenderControllerHook.h" />
     <ClInclude Include="SDK\mce\Color.h" />

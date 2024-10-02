@@ -4,6 +4,7 @@
 #include "Hook/Hook.h"
 #include "Hook/Hooks/KeyboardHook.h"
 #include "Hook/Hooks/RenderControllerHook.h"
+#include "Hook/Hooks/FreeLibraryAndExitThreadHook.h"
 
 class HookHandler {
 private:
@@ -23,6 +24,7 @@ public:
 		{
 			add<KeyboardHook::Feed>();
 			add<RenderControllerHook::getHurtColor>();
+			add<FreeLibraryAndExitThreadHook>();
 		}
 		MH_EnableHook(MH_ALL_HOOKS);
 		Initialized = true;
