@@ -21,7 +21,7 @@ using namespace Windows::UI::Notifications;
 
 bool dllmain::isRunning = true;
 std::map<unsigned char, bool> dllmain::keymap;
-
+HMODULE dllModule = 0x0;
 void CreateToast(std::wstring title, std::wstring message) {
     XmlDocument toastXml = ToastNotificationManager::GetTemplateContent(ToastTemplateType::ToastText02);
     XmlNodeList textElements = toastXml.GetElementsByTagName(L"text");
@@ -36,10 +36,12 @@ DWORD WINAPI InitializeClient(LPVOID lpParam) {
     HookHandler::Initialize();
     while (dllmain::isRunning) {
         if (dllmain::keymap['L'] && dllmain::keymap[VK_CONTROL]) {
+            dllmain::isRunning = false;
             break;
         }
         Sleep(100);
     }
+    FreeLibraryAndExitThread(dllModule, 1);
     return 1;
 }
 
@@ -49,6 +51,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
                      )
 {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
+        dllModule = hModule;
         CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)InitializeClient, hModule, NULL, NULL);
         DisableThreadLibraryCalls(hModule);
         CreateToast(L"Plugin", std::wstring(L"Actived " + PluginName + L".\nDeactive to [Ctrl+L]."));
