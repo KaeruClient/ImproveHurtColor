@@ -34,6 +34,7 @@ void CreateToast(std::wstring title, std::wstring message) {
 DWORD WINAPI InitializeClient(LPVOID lpParam) {
     MH_Initialize();
     HookHandler::Initialize();
+
     while (dllmain::isRunning) {
         if (dllmain::keymap['L'] && dllmain::keymap[VK_CONTROL]) {
             dllmain::isRunning = false;
